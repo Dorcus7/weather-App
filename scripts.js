@@ -9,8 +9,9 @@ async function getWeather() {
     }
 
     try {
-        console.log("hayward");
-        const response =  await fetch('http://localhost:5501/weather?city=${city}');
+        console.log(city);
+        const apiKey ='8bb204ff7e5f95cc13863580c2a36072';
+        const response =  await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
         const data = await response.json();
 
         if (response.ok) {
@@ -28,6 +29,8 @@ async function getWeather() {
         weatherInfo.innerHTML = 'An error occurred while fetching weather data';
     }
 }
+
+
 
 // Add event listener to the button
 document.getElementById('getWeatherBtn').addEventListener('click', getWeather);
